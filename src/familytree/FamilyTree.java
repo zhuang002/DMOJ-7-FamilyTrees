@@ -35,7 +35,7 @@ public class FamilyTree {
             sNode=sNode.substring(sNode.indexOf(".")+1);
             root.addSNode(sNode);
         }
-        System.out.println(root.size());
+        System.out.println(root.size()%1000000007L);
     }
 }
 
@@ -64,6 +64,7 @@ class TreeNode {
         if (node!=null) return node;
         node=new TreeNode(c);
         this.children.add(node);
+        node.parent=this;
         return node;
     }
     
@@ -76,9 +77,9 @@ class TreeNode {
         return null;
     }
     
-    public int size() {
-        int size=0;
-        int maxChildCode=0;
+    public long size() {
+        long size=0;
+        long maxChildCode=0;
         for (TreeNode child:this.children) {
             if (child.code>maxChildCode) 
                 maxChildCode=child.code;
